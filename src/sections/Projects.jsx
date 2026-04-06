@@ -1,3 +1,10 @@
 export const Projects = () => {
-    return <section></section>;
-}
+    return (
+        <section id="projects">
+            <br />
+            <br />
+            <br />
+            <h1>projects</h1>
+        </section>
+    );
+};
