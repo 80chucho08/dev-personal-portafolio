@@ -1,4 +1,5 @@
 import { FiArrowDown } from "react-icons/fi";
+import { PrimaryButton } from "@/components/PrimaryButton";
 
 export const Hero = () => {
     return (
@@ -16,18 +17,15 @@ export const Hero = () => {
                 </h1>
 
                 {/* Description*/}
-                <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-3xl leading-relaxed animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
+                <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-6xl leading-relaxed animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
                     Soy un <strong className="text-foreground">desarrollador FullStack</strong> con interés en el desarrollo de software, Experiencia en proyectos con JavaScript, PHP, TypeScript, implementando metodologías como MVC y tecnologías como Node.js y React
                 </p>
 
                 {/* Botón (CTA) */}
                 <div className="mt-12 animate-fadeInUp" style={{ animationDelay: '0.4s' }}>
-                    <a
-                        href="#projects"
-                        className="inline-flex items-center px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-[--radius] hover:bg-highlight transition-colors duration-300 shadow-lg"
-                    >
+                    <PrimaryButton size="lg" variant="secondary" href="#projects">
                         Ver Proyectos
-                    </a>
+                    </PrimaryButton>
                 </div>
             </div>
 
