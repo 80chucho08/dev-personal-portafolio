@@ -1,38 +1,11 @@
 // About.jsx
-import { useEffect, useRef } from "react";
 
 export const About = () => {
-  const particleContainer = useRef(null);
-
-  useEffect(() => {
-    const container = particleContainer.current;
-    const numParticles = 20; // cantidad de partículas que quieres
-    for (let i = 0; i < numParticles; i++) {
-      const particle = document.createElement("div");
-      particle.className = "particle";
-
-      // Posición aleatoria
-      particle.style.top = `${Math.random() * 100}%`;
-      particle.style.left = `${Math.random() * 100}%`;
-
-      // Delay aleatorio para que no se muevan todas igual
-      particle.style.animationDelay = `${Math.random() * 15}s`;
-
-      container.appendChild(particle);
-    }
-  }, []);
-
   return (
     <section
       id="about"
-      className="relative py-20 bg-gradient-to-br from-background via-surface to-background overflow-hidden"
+      className="relative py-20 bg-transparent overflow-hidden"
     >
-      {/* Partículas animadas en el fondo */}
-      <div
-        ref={particleContainer}
-        className="absolute inset-0 pointer-events-none"
-      ></div>
-
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
         <h2 className="text-4xl font-bold text-center mb-12 text-primary drop-shadow-lg">
           Sobre Mí
