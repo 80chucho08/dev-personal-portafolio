@@ -18,7 +18,7 @@ const projectsData = [
     repoHref: "#",
   },
   {
-    title: "Videojuego 2D - Ralph Demoledor",
+    title: "PokeApi - Selectores de Pokémon",
     description:
       "Videojuego interactivo creado con JavaScript, ThreeJS y Firebase para almacenar puntuaciones y avanzar niveles.",
     tags: ["Firebase", "JavaScript", "HTML/CSS", "ThreeJS"],
@@ -26,7 +26,7 @@ const projectsData = [
     repoHref: "#",
   },
   {
-    title: "Inventario con Análisis de IA",
+    title: "Administrador de Horarios Por hora",
     description:
       "Dashboard interactivo desarrollado en Laravel con Bootstrap, conexión a base de datos MySQL y análisis visual de datos.",
     tags: ["Laravel", "PHP", "MySQL", "Bootstrap", "JavaScript", "HTML/CSS"],
@@ -42,7 +42,7 @@ const projectsData = [
     repoHref: "#",
   },
   {
-    title: "Inventario con Análisis de IA",
+    title: "Inventario con Escolar",
     description:
       "Dashboard interactivo desarrollado en Laravel con Bootstrap, conexión a base de datos MySQL y análisis visual de datos.",
     tags: ["Laravel", "PHP", "MySQL", "Bootstrap", "JavaScript", "HTML/CSS"],
@@ -50,7 +50,7 @@ const projectsData = [
     repoHref: "#",
   },
   {
-    title: "Videojuego 2D - Ralph Demoledor",
+    title: "Videojuego 2D - Shooter",
     description:
       "Videojuego interactivo creado con JavaScript, ThreeJS y Firebase para almacenar puntuaciones y avanzar niveles.",
     tags: ["Firebase", "JavaScript", "HTML/CSS", "ThreeJS"],
