@@ -30,8 +30,8 @@ function App() {
         <Hero />
         <About />
         <Projects />
-        <Experience />
         <Skills />
+        <Experience />
         <Contact />
       </main>
     </div>
