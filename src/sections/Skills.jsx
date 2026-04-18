@@ -5,19 +5,25 @@ const categories = ["All", "Frontend", "Backend", "Database", "Tools"];
 
 const skillsData = [
     { title: "HTML/CSS", category: "Frontend", level: "Avanzado", value: 92 },
-    { title: "JavaScript", category: "Frontend", level: "Avanzado", value: 88 },
-    { title: "ReactJS", category: "Frontend", level: "Intermedio", value: 78 },
-    { title: "TypeScript", category: "Frontend", level: "Intermedio", value: 72 },
-    { title: "Blade", category: "Frontend", level: "Intermedio", value: 70 },
-    { title: "NodeJS", category: "Backend", level: "Básico", value: 62 },
-    { title: "Express", category: "Backend", level: "Básico", value: 60 },
-    { title: "Laravel", category: "Backend", level: "Avanzado", value: 84 },
-    { title: "Java", category: "Backend", level: "Avanzado", value: 90 },
-    { title: "MySQL", category: "Database", level: "Intermedio", value: 74 },
-    { title: "PostgreSQL", category: "Database", level: "Básico", value: 66 },
-    { title: "Docker", category: "Tools", level: "Básico", value: 64 },
-    { title: "Figma", category: "Tools", level: "Intermedio", value: 76 },
-    { title: "Linux/Bash", category: "Tools", level: "Avanzado", value: 86 },
+    { title: "JavaScript", category: "Frontend", level: "Avanzado", value: 89 },
+    { title: "ReactJS", category: "Frontend", level: "Intermedio", value: 80 },
+    { title: "TypeScript", category: "Frontend", level: "Intermedio", value: 75 },
+
+    { title: "NodeJS", category: "Backend", level: "Avanzado", value: 90 },
+    { title: "Express", category: "Backend", level: "Avanzado", value: 78 },
+    { title: "Java", category: "Backend", level: "Intermedio", value: 72 },
+
+    { title: "MySQL", category: "Database", level: "Intermedio", value: 76 },
+    { title: "PostgreSQL", category: "Database", level: "Básico", value: 65 },
+
+    { title: "Docker", category: "Tools", level: "Básico", value: 62 },
+    { title: "Figma", category: "Tools", level: "Intermedio", value: 75 },
+    { title: "Linux/Bash", category: "Tools", level: "Intermedio-Avanzado", value: 80 },
+    { title: "Git/GitHub", category: "Tools", level: "Intermedio-Avanzado", value: 88 },
+
+    { title: "REST APIs", category: "Backend", level: "Avanzado", value: 88 },
+    { title: "JWT/Auth", category: "Backend", level: "Avanzado", value: 85 },
+    { title: "MVC Architecture", category: "Backend", level: "Avanzado", value: 87 },
 ];
 
 export const Skills = () => {
@@ -46,8 +52,8 @@ export const Skills = () => {
                                 type="button"
                                 onClick={() => setActiveCategory(category)}
                                 className={`rounded-full border px-5 py-2 text-sm font-medium transition duration-300 ${isActive
-                                        ? "bg-primary text-white border-primary"
-                                        : "bg-white/5 text-slate-300 border-white/10 hover:bg-white/10"
+                                    ? "bg-primary text-white border-primary"
+                                    : "bg-white/5 text-slate-300 border-white/10 hover:bg-white/10"
                                     }`}
                             >
                                 {category}
