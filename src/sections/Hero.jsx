@@ -9,7 +9,7 @@ export const Hero = () => {
         >
             {/* Contenedor centralizado y con ancho máximo para el contenido */}
             <div className="container mx-auto px-6 md:px-12 flex flex-col items-center text-center max-w-5xl">
-                
+
                 {/* Título Principal */}
                 <h1 className="font-serif text-3xl md:text-5xl lg:text-6xl font-medium tracking-tight leading-tight text-foreground animate-fadeInUp">
                     Hola, Soy{" "}
@@ -18,7 +18,7 @@ export const Hero = () => {
 
                 {/* Description*/}
                 <p className="mt-8 text-lg md:text-xl text-muted-foreground max-w-6xl leading-relaxed animate-fadeInUp" style={{ animationDelay: '0.2s' }}>
-                    Soy un <strong className="text-foreground">desarrollador FullStack</strong> con interés en el desarrollo de software, Experiencia en proyectos con JavaScript, PHP, TypeScript, implementando metodologías como MVC y tecnologías como Node.js y React
+                    Soy un <strong className="text-foreground">desarrollador FullStack</strong> enfocado en la creación de aplicaciones web. Tengo experiencia trabajando con tecnologías como Node.js JavaScript y bases de datos, desarrollando proyectos propios donde aplico arquitecturas como MVC y buenas prácticas de desarrollo.
                 </p>
 
                 {/* Botón (CTA) */}
