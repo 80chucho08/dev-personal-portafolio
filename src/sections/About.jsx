@@ -29,7 +29,7 @@ export const About = () => {
           <div className="md:w-2/3 space-y-6">
             <CardMe
               title="Desarrollo Web"
-              description="Desarrollo aplicaciones web modernas utilizando tecnologías como React, JavaScript y TailwindCSS, enfocándome en interfaces dinámicas, responsivas y una buena experiencia de usuario."
+              description="Desarrollo aplicaciones web modernas utilizando tecnologías como React, JavaScript, TypeScript y TailwindCSS, enfocándome en interfaces dinámicas, responsivas y una buena experiencia de usuario."
               icon="default"
             />
             <CardMe
@@ -42,6 +42,7 @@ export const About = () => {
               description="Desarrollo la lógica del lado del servidor con Node.js y .NET, implementando arquitecturas como MVC, manejo de bases de datos y sistemas de autenticación en proyectos reales."
               icon="server"
             />
+            
           </div>
         </div>
       </div>
