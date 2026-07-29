@@ -19,7 +19,7 @@ export const PrimaryButton = ({
         outline:
             "border border-secondary/50 text-secondary hover:bg-secondary/10 bg-transparent",
         glass:
-            "glass text-foreground hover:bg-surface/20 border border-white/10",
+            "glass text-foreground hover:bg-hover/30",
     };
 
     const baseStyles =

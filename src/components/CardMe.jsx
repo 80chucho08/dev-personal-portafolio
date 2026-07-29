@@ -29,14 +29,14 @@ export const CardMe = ({
   };
 
   return (
-    <div className={`glass rounded-[2rem] border border-white/10 bg-surface/70 shadow-2xl shadow-primary/10 p-6 transition-transform duration-300 hover:-translate-y-1 hover:shadow-primary/25 ${className}`}>
+    <div className={`glass rounded-[2rem] shadow-2xl shadow-primary/5 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-primary/15 ${className}`}>
       <div className="flex items-center gap-4 mb-5">
-        <div className="flex h-10 w-14 items-center justify-center rounded-3xl bg-gradient-to-br from-primary/20 via-secondary/10 to-white/10 text-primary shadow-lg shadow-primary/20">
+        <div className="flex h-10 w-14 items-center justify-center rounded-3xl bg-gradient-to-br from-primary/20 via-secondary/10 to-transparent text-primary shadow-lg shadow-primary/10">
           {icons[icon]}
         </div>
         <h3 className="text-xl font-semibold text-foreground">{title}</h3>
       </div>
-      <p className="text-sm leading-7 text-slate-300">{description}</p>
+      <p className="text-sm leading-7 text-muted-foreground">{description}</p>
     </div>
   );
 };

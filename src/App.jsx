@@ -1,7 +1,4 @@
 import { useEffect, useState } from "react";
-import { initParticlesEngine } from "@tsparticles/react"; 
-import { loadLinksPreset } from "@tsparticles/preset-links";
-import { ParticlesBackground } from "./components/ParticlesBackground";
 import { Navbar } from "@/layout/Navbar";
 import { Hero } from "@/sections/Hero";
 import { About } from "@/sections/About";
@@ -11,22 +8,30 @@ import { Skills } from "@/sections/Skills";
 import { Contact } from "@/sections/Contact";
 
 function App() {
-  const [init, setInit] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) return savedTheme;
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    return prefersDark ? "dark" : "light";
+  });
 
-  // Esto inicializa el motor una sola vez
   useEffect(() => {
-    initParticlesEngine(async (engine) => {
-      await loadLinksPreset(engine);
-    }).then(() => {
-      setInit(true);
-    });
-  }, []);
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
 
   return (
-    <div className="min-h-screen overflow-x-hidden relative">
-      {init && <ParticlesBackground />}
+    <div className="min-h-screen overflow-x-hidden relative bg-background text-foreground transition-colors duration-300">
       <main className="relative z-10">
-        <Navbar />
+        <Navbar theme={theme} toggleTheme={toggleTheme} />
         <Hero />
         <About />
         <Projects />
@@ -35,7 +40,7 @@ function App() {
         <Contact />
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;

@@ -1,4 +1,4 @@
-import { CardMe } from "@/components/cardMe";
+import { CardMe } from "@/components/CardMe";
 import { PrimaryButton } from "../components/PrimaryButton";
 
 export const About = () => {
@@ -9,7 +9,7 @@ export const About = () => {
     >
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
         <h2 className="text-4xl font-bold text-center mb-12 text-primary drop-shadow-lg">
-          <span className="text-white">Sobre </span>
+          <span className="text-foreground">Sobre </span>
           Mí
         </h2>
         <div className="flex flex-col md:flex-row items-center gap-12">

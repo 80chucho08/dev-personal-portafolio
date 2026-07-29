@@ -68,10 +68,10 @@ export const Projects = () => {
     <section id="projects" className="relative py-20 bg-transparent overflow-hidden">
       <div className="container mx-auto px-4 max-w-6xl relative z-10">
         <div className="text-center mb-14">
-          <h2 className="text-5xl font-bold tracking-tight text-white">
+          <h2 className="text-5xl font-bold tracking-tight text-foreground">
             Mis <span className="text-primary">Proyectos</span>
           </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-slate-300">
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">
             Estos son mis proyectos recientes que he estado desarrollando. Todos fueron hechos con una gran atención al detalle.
           </p>
         </div>

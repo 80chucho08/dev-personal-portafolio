@@ -8,8 +8,8 @@ export const CardProjects = ({
     repoHref,
 }) => {
     return (
-        <article className="glass rounded-[2rem] border border-white/10 bg-surface/70 shadow-2xl shadow-primary/10 overflow-hidden transition-transform duration-300 hover:-translate-y-1">
-            <div className="overflow-hidden bg-slate-950">
+        <article className="glass rounded-[2rem] shadow-2xl shadow-primary/5 overflow-hidden transition-all duration-300 hover:-translate-y-1">
+            <div className="overflow-hidden bg-slate-950/10 dark:bg-slate-950">
                 {imageSrc ? (
                     <img
                         src={imageSrc}
@@ -17,7 +17,7 @@ export const CardProjects = ({
                         className="h-56 w-full object-cover object-center transition-transform duration-300 hover:scale-105"
                     />
                 ) : (
-                    <div className="flex h-56 items-center justify-center bg-gradient-to-br from-primary/10 via-secondary/10 to-white/5 text-sm text-slate-400">
+                    <div className="flex h-56 items-center justify-center bg-gradient-to-br from-primary/5 via-secondary/5 to-transparent text-sm text-muted-foreground">
                         Imagen del proyecto
                     </div>
                 )}
@@ -28,7 +28,7 @@ export const CardProjects = ({
                     {tags.map((tag) => (
                         <span
                             key={tag}
-                            className="rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs uppercase tracking-[0.18em] text-slate-200"
+                            className="rounded-full border border-border bg-hover/20 px-3 py-1 text-xs uppercase tracking-[0.18em] text-muted-foreground"
                         >
                             {tag}
                         </span>
@@ -37,7 +37,7 @@ export const CardProjects = ({
 
                 <div className="space-y-4">
                     <h3 className="text-2xl font-semibold text-foreground">{title}</h3>
-                    <p className="text-sm leading-7 text-slate-300">{description}</p>
+                    <p className="text-sm leading-7 text-muted-foreground">{description}</p>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-4">
@@ -60,7 +60,7 @@ export const CardProjects = ({
                             href={repoHref}
                             target="_blank"
                             rel="noreferrer"
-                            className="inline-flex items-center gap-2 text-sm font-semibold text-foreground/70 transition-colors hover:text-foreground"
+                            className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
                         >
                             <span>GitHub</span>
                             <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">

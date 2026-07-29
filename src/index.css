@@ -1,10 +1,13 @@
 @import "tailwindcss";
 
-@theme {
-  --color-background: #0d1117;
-  --color-foreground: #f0f2f5;
-
-  --color-card: #161b22;
+:root {
+  /* Tema Claro */
+  --color-background: #F7F8FA;
+  --color-card: #FFFFFF;
+  --color-foreground: #1A1D23;
+  --color-muted-foreground: #5F6673;
+  --color-border: #E2E6EB;
+  --color-hover: #D8DEE7;
 
   --color-primary: #8b5cf6;
   --color-primary-foreground: #ffffff;
@@ -12,15 +15,54 @@
   --color-secondary: #3b82f6;
   --color-secondary-foreground: #ffffff;
 
-  --color-muted: #21262d;
-  --color-muted-foreground: #8b949e;
-
-  --color-border: #30363d;
-
+  --color-muted: #E2E6EB;
   --radius: 0.75rem;
 
   --color-highlight: #bb86fc;
-  --color-surface: #0d1117;
+  --color-surface: #FFFFFF;
+}
+
+.dark, :root[class~="dark"] {
+  /* Tema Oscuro */
+  --color-background: #0E1013;
+  --color-card: #16191E;
+  --color-foreground: #E6E8EC;
+  --color-muted-foreground: #828893;
+  --color-border: #252B35;
+  --color-hover: #4A5568;
+
+  --color-primary: #8b5cf6;
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: #3b82f6;
+  --color-secondary-foreground: #ffffff;
+
+  --color-muted: #252B35;
+  --radius: 0.75rem;
+
+  --color-highlight: #bb86fc;
+  --color-surface: #16191E;
+}
+
+@theme {
+  --color-background: var(--color-background);
+  --color-card: var(--color-card);
+  --color-foreground: var(--color-foreground);
+  --color-muted-foreground: var(--color-muted-foreground);
+  --color-border: var(--color-border);
+  --color-hover: var(--color-hover);
+
+  --color-primary: var(--color-primary);
+  --color-primary-foreground: var(--color-primary-foreground);
+
+  --color-secondary: var(--color-secondary);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+
+  --color-muted: var(--color-muted);
+  --radius: var(--radius);
+
+  --color-highlight: var(--color-highlight);
+  --color-surface: var(--color-surface);
 }
 
 @layer base {
@@ -36,6 +78,7 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: "Inter", sans-serif;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
   }
 
   .font-serif {
@@ -45,35 +88,10 @@
 
 @layer components {
   .glass {
-    background-color: color-mix(in srgb, var(--color-surface) 50%, transparent);
+    background-color: color-mix(in srgb, var(--color-card) 75%, transparent);
     backdrop-filter: blur(16px);
-    border: 1px solid color-mix(in srgb, var(--color-border) 50%, transparent);
-  }
-
-  .particle {
-    position: absolute;
-    width: 6px;
-    height: 6px;
-    background: var(--color-primary);
-    border-radius: 50%;
-    opacity: 0.4;
-    animation: float 15s infinite ease-in-out;
-    z-index: 0;
-  }
-}
-
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0px) translateX(0px);
-  }
-  25% {
-    transform: translateY(-30px) translateX(30px);
-  }
-  50% {
-    transform: translateY(-60px) translateX(0px);
-  }
-  75% {
-    transform: translateY(-30px) translateX(-30px);
+    border: 1px solid var(--color-border);
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
   }
 }
 
@@ -96,3 +114,4 @@
   50% { background-position: 100% 50%; }
   100% { background-position: 0% 50%; }
 }
+

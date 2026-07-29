@@ -1,4 +1,4 @@
-﻿import { useState } from "react";
+import { useState } from "react";
 import { CardSkill } from "../components/cardSkill";
 
 const categories = ["All", "Frontend", "Backend", "Database", "Tools"];
@@ -51,9 +51,9 @@ export const Skills = () => {
                                 key={category}
                                 type="button"
                                 onClick={() => setActiveCategory(category)}
-                                className={`rounded-full border px-5 py-2 text-sm font-medium transition duration-300 ${isActive
-                                    ? "bg-primary text-white border-primary"
-                                    : "bg-white/5 text-slate-300 border-white/10 hover:bg-white/10"
+                                className={`rounded-full border px-5 py-2 text-sm font-medium transition duration-300 cursor-pointer ${isActive
+                                    ? "bg-primary text-white border-primary shadow-lg shadow-primary/20"
+                                    : "bg-hover/10 text-muted-foreground border-border hover:bg-hover/30"
                                     }`}
                             >
                                 {category}
