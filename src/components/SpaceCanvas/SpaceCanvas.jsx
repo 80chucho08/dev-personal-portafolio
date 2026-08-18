@@ -8,8 +8,8 @@ const SpaceCanvas = () => {
         const ctx = canvas.getContext("2d");
 
         const resizeCanvas = () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
+            canvas.width = document.documentElement.scrollWidth;;
+            canvas.height = document.documentElement.scrollHeight;
         };
 
         resizeCanvas();
@@ -24,7 +24,7 @@ const SpaceCanvas = () => {
     return (
         <canvas
             ref={canvasRef}
-            className="absolute inset-0 w-full h-full pointer-events-none"
+            className="fixed inset-0 w-full h-full pointer-events-none"
         />
     );
 };
