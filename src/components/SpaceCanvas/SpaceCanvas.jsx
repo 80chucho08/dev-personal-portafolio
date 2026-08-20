@@ -22,9 +22,12 @@ const SpaceCanvas = () => {
             y: 0,
         };
 
-        // Posición suavizada
-        let cursorX = 0;
-        let cursorY = 0;
+        // Nave
+        const ship = {
+            x: 0,
+            y: 0,
+            angle: 0,
+        };
 
         //========================
         //CANVAS
@@ -59,8 +62,40 @@ const SpaceCanvas = () => {
             }
 
             // Seguimiento del mouse
-            cursorX += (mouse.x - cursorX) * 0.15;
-            cursorY += (mouse.y - cursorY) * 0.15;
+            ship.x += (mouse.x - ship.x) * 0.15;
+            ship.y += (mouse.y - ship.y) * 0.15;
+
+            ship.angle = Math.atan2(
+                mouse.y - ship.y,
+                mouse.x - ship.x
+            );
+        };
+
+        const drawShip = () => {
+            ctx.save();
+
+            ctx.translate(ship.x, ship.y);
+
+            ctx.rotate(ship.angle + Math.PI / 2);
+
+            ctx.beginPath();
+
+            ctx.moveTo(0, -18);
+
+            ctx.lineTo(-10, 12);
+
+            ctx.lineTo(0, 7);
+
+            ctx.lineTo(10, 12);
+
+            ctx.closePath();
+
+            ctx.strokeStyle = "#E6E8EC";
+            ctx.lineWidth = 2;
+
+            ctx.stroke();
+
+            ctx.restore();
         };
 
 
@@ -116,18 +151,7 @@ const SpaceCanvas = () => {
             ctx.fill();
 
             // Mouse cursor suavizado
-            ctx.beginPath();
-
-            ctx.arc(
-                cursorX,
-                cursorY,
-                8,
-                0,
-                Math.PI * 2
-            );
-
-            ctx.fillStyle = "#828893";
-            ctx.fill();
+            drawShip();
         };
 
 
@@ -155,6 +179,12 @@ const SpaceCanvas = () => {
         //Inicializacion
         //========================
         resizeCanvas();
+
+        ship.x = window.innerWidth / 2;
+        ship.y = window.innerHeight / 2;
+
+        mouse.x = ship.x;
+        mouse.y = ship.y;
 
         window.addEventListener("resize", resizeCanvas);
         window.addEventListener("mousemove", handleMouseMove);
