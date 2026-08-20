@@ -7,18 +7,47 @@ const SpaceCanvas = () => {
     useEffect(() => {
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
+
+        // Game State //
         let frameCount = 0;
-
         let lastTime = 0;
+        let animationFrameId;
 
+        // Circulo de prueba 
         let testX = 100;
 
-        let animationFrameId;
+        //Mouse //
+        const mouse = {
+            x: 0,
+            y: 0,
+        };
+
+        // Posición suavizada
+        let cursorX = 0;
+        let cursorY = 0;
+
+        //========================
+        //CANVAS
+        //========================
 
         const resizeCanvas = () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         };
+
+
+        //========================
+        //Mouse
+        //========================
+        const handleMouseMove = (event) => {
+            mouse.x = event.clientX;
+            mouse.y = event.clientY;
+        };
+
+
+        //========================
+        //Update
+        //========================
         const update = (deltaTime) => {
             frameCount++;
             // Aquí actualizaremos la lógica del juego
@@ -28,8 +57,16 @@ const SpaceCanvas = () => {
             if (testX > canvas.width + 10) {
                 testX = -10;
             }
+
+            // Seguimiento del mouse
+            cursorX += (mouse.x - cursorX) * 0.15;
+            cursorY += (mouse.y - cursorY) * 0.15;
         };
 
+
+        //========================
+        //Draw
+        //========================
         const draw = () => {
             // Limpiamos el canvas
             ctx.clearRect(
@@ -38,6 +75,8 @@ const SpaceCanvas = () => {
                 canvas.width,
                 canvas.height
             );
+
+            // Frame counter
             ctx.font = "16px monospace";
             ctx.fillStyle = "#828893";
 
@@ -46,6 +85,8 @@ const SpaceCanvas = () => {
                 20,
                 30
             );
+
+
             // Círculo de prueba
             ctx.beginPath();
 
@@ -59,7 +100,40 @@ const SpaceCanvas = () => {
 
             ctx.fillStyle = "#acff46";
             ctx.fill();
+
+            // Mouse cursor
+            ctx.beginPath();
+
+            ctx.arc(
+                mouse.x,
+                mouse.y,
+                4,
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fillStyle = "#acff46";
+            ctx.fill();
+
+            // Mouse cursor suavizado
+            ctx.beginPath();
+
+            ctx.arc(
+                cursorX,
+                cursorY,
+                8,
+                0,
+                Math.PI * 2
+            );
+
+            ctx.fillStyle = "#828893";
+            ctx.fill();
         };
+
+
+        //========================
+        //Game Loop
+        //========================
 
         const gameLoop = (currentTime) => {
             // Primer frame
@@ -77,15 +151,26 @@ const SpaceCanvas = () => {
             animationFrameId = requestAnimationFrame(gameLoop);
         };
 
+        //========================
+        //Inicializacion
+        //========================
         resizeCanvas();
 
         window.addEventListener("resize", resizeCanvas);
+        window.addEventListener("mousemove", handleMouseMove);
 
         animationFrameId =
             requestAnimationFrame(gameLoop);
 
+
+        //========================
+        //Cleanup
+        //========================
+
         return () => {
             window.removeEventListener("resize", resizeCanvas);
+            window.removeEventListener("mousemove", handleMouseMove);
+
             cancelAnimationFrame(animationFrameId);
         };
     }, []);
