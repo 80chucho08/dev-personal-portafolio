@@ -75,7 +75,11 @@ const SpaceCanvas = () => {
 
             // Asteroids update
             asteroids.forEach((asteroid) => {
-                asteroid.update(deltaTime);
+                asteroid.update(
+                    deltaTime,
+                    canvas.width,
+                    canvas.height
+                );
             });
         };
 
