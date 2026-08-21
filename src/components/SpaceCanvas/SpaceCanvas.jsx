@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Asteroid } from "./game/Asteroid";
 
 const SpaceCanvas = () => {
     const canvasRef = useRef(null);
@@ -12,6 +13,8 @@ const SpaceCanvas = () => {
         let frameCount = 0;
         let lastTime = 0;
         let animationFrameId;
+
+        const asteroids = [];
 
         // Circulo de prueba 
         let testX = 100;
@@ -69,6 +72,11 @@ const SpaceCanvas = () => {
                 mouse.y - ship.y,
                 mouse.x - ship.x
             );
+
+            // Asteroids update
+            asteroids.forEach((asteroid) => {
+                asteroid.update(deltaTime);
+            });
         };
 
         const drawShip = () => {
@@ -150,6 +158,10 @@ const SpaceCanvas = () => {
             ctx.fillStyle = "#acff46";
             ctx.fill();
 
+            // Asteroids draw
+            asteroids.forEach((asteroid) => {
+                asteroid.draw(ctx);
+            });
             // Mouse cursor suavizado
             drawShip();
         };
@@ -179,6 +191,14 @@ const SpaceCanvas = () => {
         //Inicializacion
         //========================
         resizeCanvas();
+        for (let i = 0; i < 8; i++) {
+            asteroids.push(
+                new Asteroid(
+                    canvas.width,
+                    canvas.height
+                )
+            );
+        }
 
         ship.x = window.innerWidth / 2;
         ship.y = window.innerHeight / 2;
