@@ -6,7 +6,6 @@ import { Projects } from "@/sections/Projects";
 import { Experience } from "@/sections/Experience";
 import { Skills } from "@/sections/Skills";
 import { Contact } from "@/sections/Contact";
-import SpaceCanvas from "@/components/SpaceCanvas/SpaceCanvas";
 
 function App() {
   const [theme, setTheme] = useState(() => {
@@ -31,7 +30,6 @@ function App() {
 
   return (
     <div className="min-h-screen overflow-x-hidden relative bg-background text-foreground transition-colors duration-300">
-      <SpaceCanvas />
       <main className="relative z-10">
         <Navbar theme={theme} toggleTheme={toggleTheme} />
         <Hero />
