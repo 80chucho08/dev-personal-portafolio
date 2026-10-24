@@ -1,43 +1,22 @@
-
-export const CardMe = ({
-  title = "",
-  description = "",
-  icon = "default",
-  className = ""
-}) => {
+export const CardMe = ({ number, title = "", description = "", icon = "default" }) => {
   const icons = {
-    default: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-        <path d="M10 17l5-5-5-5" />
-      </svg>
-    ),
-    monitor: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-        <rect x="3" y="4" width="18" height="12" rx="2" ry="2" />
-        <line x1="8" y1="20" x2="16" y2="20" />
-        <line x1="12" y1="16" x2="12" y2="20" />
-      </svg>
-    ),
-    server: (
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" className="h-6 w-6">
-        <rect x="3" y="4" width="18" height="6" rx="2" ry="2" />
-        <rect x="3" y="14" width="18" height="6" rx="2" ry="2" />
-        <line x1="7" y1="7" x2="7" y2="7" />
-        <line x1="7" y1="17" x2="7" y2="17" />
-      </svg>
-    )
+    default: <path d="M10 17l5-5-5-5" />,
+    monitor: <><rect x="3" y="4" width="18" height="12" /><path d="M8 20h8m-4-4v4" /></>,
+    server: <><rect x="3" y="4" width="18" height="6" /><rect x="3" y="14" width="18" height="6" /><path d="M7 7h.01M7 17h.01" /></>,
   };
 
   return (
-    <div className={`glass rounded-[2rem] shadow-2xl shadow-primary/5 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-primary/15 ${className}`}>
-      <div className="flex items-center gap-4 mb-5">
-        <div className="flex h-10 w-14 items-center justify-center rounded-3xl bg-gradient-to-br from-primary/20 via-secondary/10 to-transparent text-primary shadow-lg shadow-primary/10">
-          {icons[icon]}
+    <article className="group grid gap-4 py-7 transition-colors duration-200 sm:grid-cols-[4rem_1fr] sm:gap-6 sm:py-8">
+      <span className="font-mono text-xs tracking-[0.12em] text-muted-foreground">{number}</span>
+      <div>
+        <div className="mb-3 flex items-center justify-between gap-4">
+          <h3 className="font-display text-2xl font-medium tracking-[-0.04em] text-foreground sm:text-3xl">{title}</h3>
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" className="size-5 shrink-0 text-muted-foreground transition-colors duration-200 group-hover:text-foreground">
+            {icons[icon]}
+          </svg>
         </div>
-        <h3 className="text-xl font-semibold text-foreground">{title}</h3>
+        <p className="max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">{description}</p>
       </div>
-      <p className="text-sm leading-7 text-muted-foreground">{description}</p>
-    </div>
+    </article>
   );
 };
-

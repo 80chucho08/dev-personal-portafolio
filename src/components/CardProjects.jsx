@@ -1,75 +1,59 @@
-
 export const CardProjects = ({
-    imageSrc,
-    tags = [],
-    title,
-    description,
-    liveHref,
-    repoHref,
+  imageSrc,
+  tags = [],
+  title,
+  description,
+  liveHref,
+  repoHref,
+  number,
+  layout = "grid",
 }) => {
-    return (
-        <article className="glass rounded-[2rem] shadow-2xl shadow-primary/5 overflow-hidden transition-all duration-300 hover:-translate-y-1">
-            <div className="overflow-hidden bg-slate-950/10 dark:bg-slate-950">
-                {imageSrc ? (
-                    <img
-                        src={imageSrc}
-                        alt={title}
-                        className="h-56 w-full object-cover object-center transition-transform duration-300 hover:scale-105"
-                    />
-                ) : (
-                    <div className="flex h-56 items-center justify-center bg-gradient-to-br from-primary/5 via-secondary/5 to-transparent text-sm text-muted-foreground">
-                        Imagen del proyecto
-                    </div>
-                )}
-            </div>
+  const isList = layout === "list";
 
-            <div className="p-6 space-y-5">
-                <div className="flex flex-wrap gap-2">
-                    {tags.map((tag) => (
-                        <span
-                            key={tag}
-                            className="rounded-full border border-border bg-hover/20 px-3 py-1 text-xs uppercase tracking-[0.18em] text-muted-foreground"
-                        >
-                            {tag}
-                        </span>
-                    ))}
-                </div>
+  return (
+    <article className={`group overflow-hidden border border-border bg-background transition-colors duration-300 hover:border-primary ${isList ? "grid sm:grid-cols-[minmax(220px,0.72fr)_1fr]" : "flex flex-col"}`}>
+      <div className={`overflow-hidden border-border bg-background ${isList ? "border-b sm:border-b-0 sm:border-r" : "border-b"}`}>
+        {imageSrc ? (
+          <img
+            src={imageSrc}
+            alt={title}
+            className={`w-full object-cover object-center transition-transform duration-300 group-hover:scale-[1.03] ${isList ? "aspect-[16/9] h-full min-h-48" : "aspect-[16/10]"}`}
+          />
+        ) : (
+          <div className={`flex items-center justify-center font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground ${isList ? "aspect-[16/9] h-full min-h-48" : "aspect-[16/10]"}`}>
+            Imagen del proyecto
+          </div>
+        )}
+      </div>
 
-                <div className="space-y-4">
-                    <h3 className="text-2xl font-semibold text-foreground">{title}</h3>
-                    <p className="text-sm leading-7 text-muted-foreground">{description}</p>
-                </div>
+      <div className="flex flex-col p-5 sm:p-6">
+        <div className="mb-5 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+          <span>{number}</span>
+          <span>Proyecto</span>
+        </div>
 
-                <div className="flex flex-wrap items-center gap-4">
-                    {liveHref && (
-                        <a
-                            href={liveHref}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-2 text-sm font-semibold text-secondary transition-colors hover:text-primary"
-                        >
-                            <span>Ver demo</span>
-                            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M5 12h14" />
-                                <path d="M13 5l7 7-7 7" />
-                            </svg>
-                        </a>
-                    )}
-                    {repoHref && (
-                        <a
-                            href={repoHref}
-                            target="_blank"
-                            rel="noreferrer"
-                            className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground transition-colors hover:text-foreground"
-                        >
-                            <span>GitHub</span>
-                            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
-                                <path d="M12 2C6.477 2 2 6.477 2 12c0 4.418 2.865 8.166 6.839 9.489.5.092.683-.217.683-.483 0-.239-.009-.868-.013-1.703-2.782.603-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.461-1.11-1.461-.908-.62.069-.608.069-.608 1.004.071 1.532 1.032 1.532 1.032.892 1.528 2.341 1.087 2.91.831.091-.646.35-1.087.636-1.337-2.22-.253-4.555-1.11-4.555-4.943 0-1.091.39-1.984 1.03-2.683-.103-.253-.447-1.27.098-2.647 0 0 .84-.269 2.75 1.025A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.91-1.294 2.748-1.025 2.748-1.025.546 1.378.202 2.395.1 2.648.64.699 1.028 1.592 1.028 2.683 0 3.842-2.338 4.687-4.566 4.935.36.31.68.923.68 1.861 0 1.343-.012 2.426-.012 2.755 0 .268.18.58.688.482A10.002 10.002 0 0022 12c0-5.523-4.477-10-10-10z" />
-                            </svg>
-                        </a>
-                    )}
-                </div>
-            </div>
-        </article>
-    );
+        <h3 className="mb-3 font-display text-2xl font-medium leading-tight tracking-[-0.04em] text-foreground sm:text-3xl">{title}</h3>
+        <p className="mb-6 text-sm leading-7 text-muted-foreground">{description}</p>
+
+        <div className="mb-7 flex flex-wrap gap-2">
+          {tags.map((tag) => (
+            <span key={tag} className="border border-border px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-muted-foreground">{tag}</span>
+          ))}
+        </div>
+
+        <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-4">
+          {liveHref && (
+            <a href={liveHref} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-foreground transition-colors duration-200 hover:text-muted-foreground">
+              Ver demo <span aria-hidden="true">↗</span>
+            </a>
+          )}
+          {repoHref && (
+            <a href={repoHref} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-foreground transition-colors duration-200 hover:text-muted-foreground">
+              GitHub <span aria-hidden="true">↗</span>
+            </a>
+          )}
+        </div>
+      </div>
+    </article>
+  );
 };

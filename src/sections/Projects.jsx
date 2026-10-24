@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { CardProjects } from "@/components/CardProjects";
 
 const projectsData = [
@@ -64,23 +65,36 @@ const projectsData = [
 ];
 
 export const Projects = () => {
+  const [layout, setLayout] = useState("grid");
+
   return (
-    <section id="projects" className="relative py-20 bg-transparent overflow-hidden">
-      <div className="container mx-auto px-4 max-w-6xl relative z-10">
-        <div className="text-center mb-14">
-          <h2 className="text-5xl font-bold tracking-tight text-foreground">
-            Mis <span className="text-primary">Proyectos</span>
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-sm leading-7 text-muted-foreground">
-            Estos son mis proyectos recientes que he estado desarrollando. Todos fueron hechos con una gran atención al detalle.
-          </p>
+    <section id="projects" className="border-t border-border px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
+      <div className="mx-auto max-w-[1200px]">
+        <div className="mb-12 flex flex-col justify-between gap-6 border-b border-border pb-6 sm:mb-14 sm:flex-row sm:items-end">
+          <div>
+            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">02 / Selección</p>
+            <h2 className="font-display text-5xl font-medium tracking-[-0.06em] text-foreground sm:text-7xl">/* Proyectos */</h2>
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-muted-foreground sm:text-base">
+              Estos son mis proyectos recientes que he estado desarrollando. Todos fueron hechos con una gran atención al detalle.
+            </p>
+          </div>
+          <div className="flex shrink-0 items-center gap-2" aria-label="Diseño de proyectos">
+            <button type="button" aria-pressed={layout === "grid"} onClick={() => setLayout("grid")} className={`border px-3 py-2 font-mono text-[10px] uppercase tracking-[0.1em] transition-colors duration-200 ${layout === "grid" ? "border-foreground text-foreground" : "border-border text-muted-foreground hover:text-foreground"}`}>
+              Cuadrícula
+            </button>
+            <button type="button" aria-pressed={layout === "list"} onClick={() => setLayout("list")} className={`border px-3 py-2 font-mono text-[10px] uppercase tracking-[0.1em] transition-colors duration-200 ${layout === "list" ? "border-foreground text-foreground" : "border-border text-muted-foreground hover:text-foreground"}`}>
+              Lista
+            </button>
+          </div>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-3">
-          {projectsData.map((project) => (
+        <div className={layout === "grid" ? "grid gap-4 md:grid-cols-2 xl:grid-cols-3" : "flex flex-col gap-4"}>
+          {projectsData.map((project, index) => (
             <CardProjects
-              imageSrc={project.imageSrc}
               key={project.title}
+              number={String(index + 1).padStart(2, "0")}
+              layout={layout}
+              imageSrc={project.imageSrc}
               title={project.title}
               description={project.description}
               tags={project.tags}
