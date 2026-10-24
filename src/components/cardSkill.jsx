@@ -1,21 +1,22 @@
-export const CardSkill = ({
-  title,
-  level,
-  value,
-  className = "",
-}) => {
-  return (
-    <article className={`glass rounded-[2rem] shadow-2xl shadow-primary/5 p-6 transition-all duration-300 hover:-translate-y-1 ${className}`}>
-      <div className="flex items-center justify-between gap-4 mb-5">
-        <h3 className="text-xl font-semibold text-foreground">{title}</h3>
-        <span className="text-sm font-medium text-muted-foreground">{level}</span>
-      </div>
+const getLevelScore = (level) => {
+  if (level.toLowerCase().includes("avanzado")) return 3;
+  if (level.toLowerCase() === "intermedio") return 2;
+  return 1;
+};
 
-      <div className="rounded-full bg-hover/20 h-2 overflow-hidden">
-        <div
-          className="h-full rounded-full bg-gradient-to-r from-primary to-secondary transition-all duration-500"
-          style={{ width: `${value}%` }}
-        />
+export const CardSkill = ({ title, level }) => {
+  const score = getLevelScore(level);
+
+  return (
+    <article className="flex h-full min-h-[76px] items-center justify-between gap-4 border border-border px-4 py-4 transition-colors duration-200 hover:border-muted-foreground sm:px-5">
+      <h3 className="font-display text-lg font-medium tracking-[-0.03em] text-foreground">{title}</h3>
+      <div className="flex shrink-0 flex-col items-end gap-2" aria-label={`${level} (${score} de 3)`}>
+        <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-muted-foreground">{level}</span>
+        <span className="flex gap-1" aria-hidden="true">
+          {[1, 2, 3].map((point) => (
+            <span key={point} className={`size-1.5 ${point <= score ? "bg-primary" : "border border-border"}`} />
+          ))}
+        </span>
       </div>
     </article>
   );

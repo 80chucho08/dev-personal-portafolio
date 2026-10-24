@@ -39,6 +39,12 @@ function App() {
         <Experience />
         <Contact />
       </main>
+      <footer className="border-t border-border px-5 py-5 sm:px-8 lg:px-12">
+        <div className="mx-auto flex max-w-[1200px] items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
+          <span>© {new Date().getFullYear()}</span>
+          <span>v1.0</span>
+        </div>
+      </footer>
     </div>
   );
 }

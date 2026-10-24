@@ -11,7 +11,7 @@ export const CardProjects = ({
   const isList = layout === "list";
 
   return (
-    <article className={`group overflow-hidden border border-border bg-background transition-colors duration-300 hover:border-primary ${isList ? "grid sm:grid-cols-[minmax(220px,0.72fr)_1fr]" : "flex flex-col"}`}>
+    <article className={`group h-full overflow-hidden border border-border bg-background transition-colors duration-300 hover:border-primary ${isList ? "grid sm:grid-cols-[minmax(220px,0.72fr)_1fr]" : "flex flex-col"}`}>
       <div className={`overflow-hidden border-border bg-background ${isList ? "border-b sm:border-b-0 sm:border-r" : "border-b"}`}>
         {imageSrc ? (
           <img

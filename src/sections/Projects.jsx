@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { CardProjects } from "@/components/CardProjects";
+import { Reveal } from "@/components/Reveal";
 
 const projectsData = [
   {
@@ -70,7 +71,7 @@ export const Projects = () => {
   return (
     <section id="projects" className="border-t border-border px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
       <div className="mx-auto max-w-[1200px]">
-        <div className="mb-12 flex flex-col justify-between gap-6 border-b border-border pb-6 sm:mb-14 sm:flex-row sm:items-end">
+        <Reveal className="mb-12 flex flex-col justify-between gap-6 border-b border-border pb-6 sm:mb-14 sm:flex-row sm:items-end">
           <div>
             <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">02 / Selección</p>
             <h2 className="font-display text-5xl font-medium tracking-[-0.06em] text-foreground sm:text-7xl">/* Proyectos */</h2>
@@ -86,12 +87,12 @@ export const Projects = () => {
               Lista
             </button>
           </div>
-        </div>
+        </Reveal>
 
         <div className={layout === "grid" ? "grid gap-4 md:grid-cols-2 xl:grid-cols-3" : "flex flex-col gap-4"}>
           {projectsData.map((project, index) => (
+            <Reveal key={project.title} className="h-full">
             <CardProjects
-              key={project.title}
               number={String(index + 1).padStart(2, "0")}
               layout={layout}
               imageSrc={project.imageSrc}
@@ -101,6 +102,7 @@ export const Projects = () => {
               liveHref={project.liveHref}
               repoHref={project.repoHref}
             />
+            </Reveal>
           ))}
         </div>
       </div>

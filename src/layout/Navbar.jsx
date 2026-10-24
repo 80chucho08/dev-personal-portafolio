@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 import { FiMenu, FiMoon, FiSun, FiX } from "react-icons/fi";
+import { SHOW_EXPERIENCE } from "@/sections/Experience";
 
 const navLinks = [
   { href: "#about", label: "Sobre mí" },
   { href: "#projects", label: "Proyectos" },
-  { href: "#skills", label: "Skills" },
+  { href: "#skills", label: "Habilidades" },
+  ...(SHOW_EXPERIENCE ? [{ href: "#experience", label: "Experiencia" }] : []),
   { href: "#contact", label: "Contacto" },
 ];
 
