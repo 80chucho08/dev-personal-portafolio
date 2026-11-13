@@ -1,45 +1,92 @@
-import { CardMe } from "@/components/CardMe";
+import { Entry } from "@/components/Entry";
 import { Reveal } from "@/components/Reveal";
+import { Highlight } from "@/components/Highlight";
 
-const actionClass = "inline-flex min-h-11 items-center justify-center border border-border px-4 font-mono text-[10px] uppercase tracking-[0.12em] text-foreground transition-colors duration-200 hover:border-primary hover:bg-primary hover:text-[#0B0C07]";
+const focusLines = [
+  {
+    code: "L-01",
+    title: "Backend y APIs",
+    body: "Diseño servidores con Node.js y Express, APIs REST y arquitectura MVC, con autenticación y contraseñas protegidas con hashing.",
+  },
+  {
+    code: "L-02",
+    title: "Bases de datos",
+    body: "Trabajo con SQL Server, MySQL y MongoDB. En el Centro de Cómputo del ITP optimicé procedimientos almacenados que procesan grandes volúmenes de registros.",
+  },
+  {
+    code: "L-03",
+    title: "Interfaces web y móviles",
+    body: "Construyo formularios, dashboards y apps con React, React Native, TypeScript y Tailwind, cuidando que se usen bien en cualquier pantalla.",
+  },
+  {
+    code: "L-04",
+    title: "En exploración: nube e IA",
+    body: "Certificado en AWS Cloud Foundations y Python Essentials; ahora experimento con servicios en la nube e inteligencia artificial.",
+    open: true,
+  },
+];
+
+const facts = [
+  ["Formación", "Ing. en Sistemas Computacionales"],
+  ["Institución", "Instituto Tecnológico de Pachuca"],
+  ["Egreso", "Diciembre 2026"],
+  ["Idiomas", "Español nativo · Inglés B2"],
+  ["Base", "Pachuca, Hidalgo, México"],
+];
 
 export const About = () => {
   return (
-    <section id="about" className="border-t border-border px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
-      <div className="mx-auto max-w-[1200px]">
-        <Reveal className="mb-14 flex flex-col justify-between gap-5 border-b border-border pb-6 sm:mb-16 sm:flex-row sm:items-end">
-          <div>
-            <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">01 / Perfil</p>
-            <h2 className="font-display text-5xl font-medium tracking-[-0.06em] text-foreground sm:text-7xl">Sobre mí<span className="text-muted-foreground">.</span></h2>
-          </div>
-          <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">Una mirada a mi trabajo</p>
-        </Reveal>
+    <Entry id="about" number="01" label="Perfil" title="Quién escribe esta bitácora" note="lo que me mueve →">
+      <Reveal>
+        <p className="max-w-3xl text-xl leading-relaxed text-foreground sm:text-2xl">
+          Me gusta entender cómo funcionan los sistemas por dentro. He pasado de maquetar módulos a optimizar consultas en
+          SQL Server, y de ahí a desarrollar una app móvil en una pasantía. Mi meta es{" "}
+          <Highlight>convertir problemas de datos en software claro y confiable.</Highlight>
+        </p>
+      </Reveal>
 
-        <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
-          <Reveal className="flex flex-col items-start">
-            <div className="grid size-40 place-items-center border border-border font-mono text-4xl tracking-[-0.08em] text-foreground sm:size-48 sm:text-5xl" aria-label="Iniciales JC">
-              JC
-            </div>
-            <div className="mt-7 flex flex-wrap gap-2">
-              {["Analítico", "Resolutivo", "Perseverante"].map((quality, index) => (
-                <span key={quality} className="font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">
-                  {quality}{index < 2 && <span className="ml-2 text-border">/</span>}
-                </span>
-              ))}
-            </div>
-            <div className="mt-8 flex flex-wrap gap-3">
-              <a className={actionClass} href="#projects">ContactaMe</a>
-              <a className={actionClass} href="#projects">Descargar CV</a>
-            </div>
+      <div className="mt-14 grid gap-12 xl:grid-cols-[1.4fr_0.6fr] xl:gap-14">
+        <div>
+          <Reveal>
+            <h3 className="mb-2 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">Líneas de trabajo</h3>
           </Reveal>
-
-          <div className="divide-y divide-border border-y border-border">
-            <Reveal><CardMe number="01" title="Desarrollo Web" description="Desarrollo aplicaciones web modernas utilizando tecnologías como React, JavaScript, TypeScript y TailwindCSS, enfocándome en interfaces dinámicas, responsivas y una buena experiencia de usuario." icon="default" /></Reveal>
-            <Reveal><CardMe number="02" title="Entornos y herramientas" description="Trabajo en entornos de desarrollo tanto en Windows como Linux, gestionando proyectos en local y con despliegues básicos en servidores mediante SSH y servicios en la nube." icon="monitor" /></Reveal>
-            <Reveal><CardMe number="03" title="Back-end Development" description="Desarrollo la lógica del lado del servidor con Node.js y .NET, implementando arquitecturas como MVC, manejo de bases de datos y sistemas de autenticación en proyectos reales." icon="server" /></Reveal>
-          </div>
+          <ol className="border-t border-border">
+            {focusLines.map(({ code, title, body, open }) => (
+              <Reveal
+                as="li"
+                key={code}
+                className="grid gap-2 border-b border-border py-6 sm:grid-cols-[4.5rem_1fr] sm:gap-6"
+              >
+                <span className="font-mono text-xs text-muted-foreground">{code}</span>
+                <div>
+                  <h4 className="font-display text-2xl font-medium text-foreground">
+                    {title}
+                    {open && <span className="ml-3 font-hand text-xl text-primary">(en curso)</span>}
+                  </h4>
+                  <p className="mt-2 max-w-2xl text-base leading-relaxed text-muted-foreground sm:text-lg">{body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </ol>
         </div>
+
+        <Reveal>
+          <aside className="border border-border bg-card p-6">
+            <h3 className="font-hand text-2xl text-primary">datos rápidos</h3>
+            <dl className="mt-4 divide-y divide-border">
+              {facts.map(([label, value]) => (
+                <div key={label} className="py-3">
+                  <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">{label}</dt>
+                  <dd className="mt-1 text-base text-foreground">{value}</dd>
+                </div>
+              ))}
+            </dl>
+            <a href="#contact" className="ink-link mt-5 inline-block text-base">
+              Escríbeme →
+            </a>
+          </aside>
+        </Reveal>
       </div>
-    </section>
+    </Entry>
   );
 };

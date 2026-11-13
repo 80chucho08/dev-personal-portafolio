@@ -1,73 +1,59 @@
-import { useState } from "react";
-import { CardSkill } from "@/components/cardSkill";
+import { Entry } from "@/components/Entry";
 import { Reveal } from "@/components/Reveal";
 
-const categories = [
-  { value: "All", label: "Todas" },
-  { value: "Frontend", label: "Frontend" },
-  { value: "Backend", label: "Backend" },
-  { value: "Database", label: "Bases de datos" },
-  { value: "Tools", label: "Herramientas" },
+// Agrupado por capa del sistema; sin niveles autoasignados.
+const stack = [
+  { layer: "Lenguajes", items: ["Python", "Java", "C#", "JavaScript", "TypeScript", "PHP"] },
+  { layer: "Backend", items: ["Node.js", "Express", "APIs REST", "Arquitectura MVC", "Autenticación y hashing"] },
+  { layer: "Datos", items: ["SQL Server", "MySQL", "MongoDB", "Procedimientos almacenados", "Optimización de consultas"] },
+  { layer: "Interfaz", items: ["React", "React Native", "HTML/CSS", "Tailwind CSS"] },
+  { layer: "Nube y seguridad", items: ["AWS (fundamentos)", "Ciberseguridad (fundamentos)"] },
+  { layer: "Herramientas", items: ["Git", "GitHub", "Android Studio", "Expo Go", "Trello"] },
 ];
 
-const skillsData = [
-  { title: "HTML/CSS", category: "Frontend", level: "Avanzado", value: 92 },
-  { title: "JavaScript", category: "Frontend", level: "Avanzado", value: 89 },
-  { title: "ReactJS", category: "Frontend", level: "Intermedio", value: 80 },
-  { title: "TypeScript", category: "Frontend", level: "Intermedio", value: 75 },
-  { title: "NodeJS", category: "Backend", level: "Avanzado", value: 90 },
-  { title: "Express", category: "Backend", level: "Avanzado", value: 78 },
-  { title: "Java", category: "Backend", level: "Intermedio", value: 72 },
-  { title: "MySQL", category: "Database", level: "Intermedio", value: 76 },
-  { title: "PostgreSQL", category: "Database", level: "Básico", value: 65 },
-  { title: "Docker", category: "Tools", level: "Básico", value: 62 },
-  { title: "Figma", category: "Tools", level: "Intermedio", value: 75 },
-  { title: "Linux/Bash", category: "Tools", level: "Intermedio-Avanzado", value: 80 },
-  { title: "Git/GitHub", category: "Tools", level: "Intermedio-Avanzado", value: 88 },
-  { title: "REST APIs", category: "Backend", level: "Avanzado", value: 88 },
-  { title: "JWT/Auth", category: "Backend", level: "Avanzado", value: 85 },
-  { title: "MVC Architecture", category: "Backend", level: "Avanzado", value: 87 },
+const certifications = [
+  { name: "AWS Cloud Foundations", issuer: "Amazon Web Services" },
+  { name: "Junior Cybersecurity Analyst Career Path", issuer: "Cisco" },
+  { name: "Python Essentials 1", issuer: "Cisco" },
+  { name: "Inglés B2 (High Intermediate)", issuer: "Voxy Proficiency" },
 ];
 
 export const Skills = () => {
-  const [activeCategory, setActiveCategory] = useState("All");
-  const filteredSkills = activeCategory === "All"
-    ? skillsData
-    : skillsData.filter((skill) => skill.category === activeCategory);
-
   return (
-    <section id="skills" className="border-t border-border px-5 py-24 sm:px-8 sm:py-32 lg:px-12">
-      <div className="mx-auto max-w-[1200px]">
-        <Reveal className="mb-10 border-b border-border pb-6 sm:mb-12">
-          <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.18em] text-muted-foreground">03 / Tecnologías</p>
-          <h2 className="font-display text-5xl font-medium tracking-[-0.06em] text-foreground sm:text-7xl">Habilidades<span className="text-muted-foreground">.</span></h2>
-        </Reveal>
-
-        <Reveal className="mb-8 flex flex-wrap gap-2" aria-label="Filtrar habilidades">
-          {categories.map(({ value, label }) => {
-            const isActive = value === activeCategory;
-            return (
-              <button
-                key={value}
-                type="button"
-                onClick={() => setActiveCategory(value)}
-                aria-pressed={isActive}
-                className={`border px-4 py-2 font-mono text-[10px] uppercase tracking-[0.1em] transition-colors duration-200 ${isActive ? "border-primary bg-primary text-[#0B0C07]" : "border-border text-muted-foreground hover:text-foreground"}`}
-              >
-                {label}
-              </button>
-            );
-          })}
-        </Reveal>
-
-        <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
-          {filteredSkills.map((skill) => (
-            <Reveal key={skill.title} layout className="h-full">
-              <CardSkill title={skill.title} level={skill.level} />
+    <Entry id="skills" number="03" label="Stack" title="Instrumental del laboratorio" note="ordenado por capa, de la interfaz a los datos">
+      <div className="grid gap-12 xl:grid-cols-[1.4fr_0.6fr] xl:gap-14">
+        <dl className="border-t border-border">
+          {stack.map(({ layer, items }) => (
+            <Reveal key={layer} className="grid gap-3 border-b border-border py-5 sm:grid-cols-[11rem_1fr] sm:gap-6">
+              <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground sm:pt-1.5">{layer}</dt>
+              <dd className="flex flex-wrap gap-2">
+                {items.map((item) => (
+                  <span
+                    key={item}
+                    className="border border-border bg-card px-3 py-1 text-base text-foreground transition-colors duration-200 hover:border-primary"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </dd>
             </Reveal>
           ))}
-        </div>
+        </dl>
+
+        <Reveal>
+          <aside className="border border-border bg-card p-6">
+            <h3 className="font-hand text-2xl text-primary">certificaciones</h3>
+            <ul className="mt-4 divide-y divide-border">
+              {certifications.map(({ name, issuer }) => (
+                <li key={name} className="py-3">
+                  <p className="text-base leading-snug text-foreground">{name}</p>
+                  <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">{issuer}</p>
+                </li>
+              ))}
+            </ul>
+          </aside>
+        </Reveal>
       </div>
-    </section>
+    </Entry>
   );
 };

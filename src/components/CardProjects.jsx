@@ -1,59 +1,58 @@
-export const CardProjects = ({
-  imageSrc,
-  tags = [],
-  title,
-  description,
-  liveHref,
-  repoHref,
-  number,
-  layout = "grid",
-}) => {
-  const isList = layout === "list";
+import { FiArrowUpRight, FiGithub } from "react-icons/fi";
 
-  return (
-    <article className={`group h-full overflow-hidden border border-border bg-background transition-colors duration-300 hover:border-primary ${isList ? "grid sm:grid-cols-[minmax(220px,0.72fr)_1fr]" : "flex flex-col"}`}>
-      <div className={`overflow-hidden border-border bg-background ${isList ? "border-b sm:border-b-0 sm:border-r" : "border-b"}`}>
-        {imageSrc ? (
-          <img
-            src={imageSrc}
-            alt={title}
-            className={`w-full object-cover object-center transition-transform duration-300 group-hover:scale-[1.03] ${isList ? "aspect-[16/9] h-full min-h-48" : "aspect-[16/10]"}`}
-          />
+const linkClass =
+  "inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-primary transition-colors duration-200 hover:text-foreground";
+
+/* Ficha de experimento: recorte con la captura, descripción y montaje (stack). */
+export const CardProjects = ({ code, name, kind, description, tags = [], imageSrc, liveHref, repoHref, featured }) => (
+  <article className="group relative flex h-full flex-col border border-border bg-card p-4 sm:p-5">
+    {featured && (
+      <span className="absolute -right-2 -top-4 z-10 rotate-6 bg-highlight px-2 font-hand text-xl text-foreground shadow-sm">
+        ★ destacado
+      </span>
+    )}
+
+    <div className="relative border border-border bg-background p-2">
+      <span className="tape -top-3 left-6 -rotate-6" aria-hidden="true" />
+      <div className="overflow-hidden">
+        <img
+          src={imageSrc}
+          alt={`Captura de ${name}`}
+          loading="lazy"
+          className="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+        />
+      </div>
+    </div>
+
+    <div className="flex flex-1 flex-col px-1 pt-6">
+      <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{code}</p>
+      <h3 className="mt-2 font-display text-3xl font-medium leading-tight text-foreground">{name}</h3>
+      <p className="text-lg italic text-muted-foreground">{kind}</p>
+      <p className="mt-4 text-base leading-relaxed text-foreground">{description}</p>
+
+      <div className="mb-6 mt-5">
+        <p className="font-hand text-xl text-primary">montaje:</p>
+        <p className="mt-1 font-mono text-xs uppercase leading-relaxed tracking-[0.1em] text-muted-foreground">
+          {tags.join(" · ")}
+        </p>
+      </div>
+
+      <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-4">
+        {liveHref ? (
+          <a href={liveHref} target="_blank" rel="noreferrer" className={linkClass}>
+            Ver demo <FiArrowUpRight aria-hidden="true" />
+            <span className="sr-only">de {name} (se abre en una pestaña nueva)</span>
+          </a>
         ) : (
-          <div className={`flex items-center justify-center font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground ${isList ? "aspect-[16/9] h-full min-h-48" : "aspect-[16/10]"}`}>
-            Imagen del proyecto
-          </div>
+          <span className="font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground">Demo no publicada</span>
+        )}
+        {repoHref && (
+          <a href={repoHref} target="_blank" rel="noreferrer" className={linkClass}>
+            <FiGithub aria-hidden="true" /> Código
+            <span className="sr-only">de {name} en GitHub (se abre en una pestaña nueva)</span>
+          </a>
         )}
       </div>
-
-      <div className="flex flex-col p-5 sm:p-6">
-        <div className="mb-5 flex items-center justify-between font-mono text-[10px] uppercase tracking-[0.14em] text-muted-foreground">
-          <span>{number}</span>
-          <span>Proyecto</span>
-        </div>
-
-        <h3 className="mb-3 font-display text-2xl font-medium leading-tight tracking-[-0.04em] text-foreground sm:text-3xl">{title}</h3>
-        <p className="mb-6 text-sm leading-7 text-muted-foreground">{description}</p>
-
-        <div className="mb-7 flex flex-wrap gap-2">
-          {tags.map((tag) => (
-            <span key={tag} className="border border-border px-2 py-1 font-mono text-[9px] uppercase tracking-[0.1em] text-muted-foreground">{tag}</span>
-          ))}
-        </div>
-
-        <div className="mt-auto flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-border pt-4">
-          {liveHref && (
-            <a href={liveHref} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-foreground transition-colors duration-200 hover:text-muted-foreground">
-              Ver demo <span aria-hidden="true">↗</span>
-            </a>
-          )}
-          {repoHref && (
-            <a href={repoHref} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.12em] text-foreground transition-colors duration-200 hover:text-muted-foreground">
-              GitHub <span aria-hidden="true">↗</span>
-            </a>
-          )}
-        </div>
-      </div>
-    </article>
-  );
-};
+    </div>
+  </article>
+);

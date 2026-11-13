@@ -1,26 +1,35 @@
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&display=swap");
 @import "tailwindcss";
 
+/* Cuaderno de laboratorio: papel (claro) y pizarra (oscuro). */
 :root {
   color-scheme: light;
-  --theme-background: #F4F4F0;
-  --theme-foreground: #0B0C07;
-  --theme-muted: #6B6D68;
-  --theme-line: #DADBD4;
-  --theme-accent: #C6FF3D;
-  --theme-card: #F4F4F0;
-  --theme-hover: #DADBD4;
+  --theme-background: #F5F2EA;  /* papel */
+  --theme-grid: #E7E2D5;        /* cuadrícula del papel */
+  --theme-foreground: #22211E;  /* grafito */
+  --theme-muted: #5F5B52;
+  --theme-line: #D8D1C1;
+  --theme-accent: #2340A0;      /* tinta azul */
+  --theme-on-accent: #F5F2EA;
+  --theme-highlight: #F2D64B;   /* marcatextos */
+  --theme-margin: #D98A74;      /* línea de margen */
+  --theme-card: #FBF9F3;
+  --theme-hover: #ECE7DB;
 }
 
 :root.dark {
   color-scheme: dark;
-  --theme-background: #0B0C07;
-  --theme-foreground: #E1E5E5;
-  --theme-muted: #8A8D88;
-  --theme-line: #23251E;
-  --theme-accent: #C6FF3D;
-  --theme-card: #0B0C07;
-  --theme-hover: #23251E;
+  --theme-background: #1E2321;  /* pizarra */
+  --theme-grid: #262C29;
+  --theme-foreground: #E8E4D8;  /* tiza */
+  --theme-muted: #A7A497;
+  --theme-line: #353B38;
+  --theme-accent: #9DB4FF;
+  --theme-on-accent: #1E2321;
+  --theme-highlight: #5C4C17;
+  --theme-margin: #7A4B3F;
+  --theme-card: #232926;
+  --theme-hover: #2B322F;
 }
 
 @theme {
@@ -29,26 +38,30 @@
   --color-muted-foreground: var(--theme-muted);
   --color-border: var(--theme-line);
   --color-primary: var(--theme-accent);
-  --color-primary-foreground: #0B0C07;
+  --color-primary-foreground: var(--theme-on-accent);
+  --color-highlight: var(--theme-highlight);
+  --color-margin: var(--theme-margin);
+  --color-grid: var(--theme-grid);
   --color-card: var(--theme-card);
   --color-hover: var(--theme-hover);
-  --font-display: "Space Grotesk", sans-serif;
-  --font-sans: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-display: "Newsreader", Georgia, serif;
+  --font-sans: "Newsreader", Georgia, serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-hand: "Caveat", "Segoe Print", cursive;
 }
 
 @layer base {
   html {
     scroll-behavior: smooth;
-    scroll-padding-top: 6rem;
+    scroll-padding-top: 5rem;
   }
 
   body {
     margin: 0;
     background: var(--theme-background);
     color: var(--theme-foreground);
-    font-family: "Inter", sans-serif;
-    font-size: 16px;
+    font-family: var(--font-sans);
+    font-size: 18px;
     line-height: 1.6;
     transition: background-color 250ms ease, color 250ms ease;
   }
@@ -60,6 +73,56 @@
   :focus-visible {
     outline: 2px solid var(--color-primary);
     outline-offset: 4px;
+  }
+}
+
+@layer components {
+  /* Papel cuadriculado de fondo */
+  .paper {
+    background-color: var(--theme-background);
+    background-image:
+      linear-gradient(var(--theme-grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--theme-grid) 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-position: -1px -1px;
+  }
+
+  /* Trazo de marcatextos; el ancho se anima desde <Highlight> */
+  .marker {
+    background-image: linear-gradient(
+      transparent 58%,
+      var(--theme-highlight) 58%,
+      var(--theme-highlight) 92%,
+      transparent 92%
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    padding-inline: 0.08em;
+  }
+
+  /* Enlace de tinta: subrayado ondulado al pasar */
+  .ink-link {
+    color: var(--theme-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 0.2em;
+    transition: text-decoration-color 200ms ease;
+  }
+
+  .ink-link:hover {
+    text-decoration-style: wavy;
+  }
+
+  /* Cinta adhesiva para recortes */
+  .tape {
+    position: absolute;
+    width: 5.5rem;
+    height: 1.6rem;
+    background: color-mix(in srgb, var(--theme-highlight) 45%, transparent);
+    border-inline: 1px dashed color-mix(in srgb, var(--theme-foreground) 12%, transparent);
+    backdrop-filter: blur(1px);
   }
 }
 
