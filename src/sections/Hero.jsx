@@ -24,7 +24,7 @@ export const Hero = () => {
 
           <p className="mt-8 max-w-2xl text-xl leading-relaxed text-foreground sm:text-2xl">
             Ingeniero en Sistemas Computacionales en formación. Construyo aplicaciones de punta a punta y me interesa
-            sobre todo lo que no se ve: el <Highlight>backend, las bases de datos</Highlight> y la arquitectura que los
+            el desarrollo completo, incluso todo lo que no se ve: el <Highlight>backend, las bases de datos</Highlight> y la arquitectura que los
             sostiene.
           </p>
 
@@ -69,14 +69,14 @@ export const Hero = () => {
                 className="aspect-[4/5] w-full object-cover object-top"
               />
               <figcaption className="absolute inset-x-3 bottom-3 font-hand text-2xl text-foreground">
-                el autor de la bitácora
+                Jesus Carbajal
               </figcaption>
             </div>
             <p
               aria-hidden="true"
-              className="absolute -bottom-10 -left-4 hidden -rotate-6 font-hand text-2xl text-primary sm:block lg:-left-16"
+              className="absolute -bottom-15 -left-4 hidden -rotate-6 font-hand text-2xl text-primary sm:block lg:-left-16"
             >
-              ↗ objetivo: backend, datos e IA
+              ↗ Objetivo: desarrollo Full Stack, arquitectura de aplicaciones e IA
             </p>
           </figure>
         </Reveal>
