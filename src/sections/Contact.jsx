@@ -52,8 +52,8 @@ export const Contact = () => {
       <div className="grid items-start gap-12 xl:grid-cols-[1.2fr_0.8fr] xl:gap-14">
         <Reveal>
           <p className="max-w-2xl text-xl leading-relaxed text-foreground sm:text-2xl">
-            Busco <Highlight>prácticas profesionales</Highlight> y proyectos donde pueda aportar en desarrollo de
-            aplicaciones y gestión de datos. Si tienes una propuesta o una duda, escríbeme.
+            Estoy buscando mi primera <Highlight>oportunidad laboral</Highlight> como desarrollador fullstack o backend,
+            en un equipo donde pueda aportar y seguir creciendo. Si tienes una vacante o quieres conversar, escríbeme.
           </p>
 
           <div className="mt-10 border border-border bg-card p-5 sm:p-7">

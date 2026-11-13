@@ -49,7 +49,7 @@ export const Navbar = ({ theme, toggleTheme }) => {
         className="mx-auto flex min-h-16 max-w-[1200px] items-center justify-between px-5 sm:px-8 lg:px-12"
       >
         <a href="#hero" onClick={closeMenu} className="group flex items-baseline gap-2 text-foreground">
-          <span className="font-display text-xl font-medium italic tracking-[-0.01em]">J. Navarro</span>
+          <span className="font-display text-xl font-medium italic tracking-[-0.01em]">J. Carbajal</span>
           <span className="font-hand text-lg text-primary transition-transform duration-200 group-hover:-rotate-3">
             bitácora
           </span>

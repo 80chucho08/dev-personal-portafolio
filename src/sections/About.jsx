@@ -36,12 +36,12 @@ const facts = [
 
 export const About = () => {
   return (
-    <Entry id="about" number="01" label="Perfil" title="Quién escribe esta bitácora" note="lo que me mueve →">
+    <Entry id="about" number="01" label="Perfil" title="Perfil" note="lo que me mueve →">
       <Reveal>
         <p className="max-w-3xl text-xl leading-relaxed text-foreground sm:text-2xl">
-          Me gusta entender cómo funcionan los sistemas por dentro. He pasado de maquetar módulos a optimizar consultas en
-          SQL Server, y de ahí a desarrollar una app móvil en una pasantía. Mi meta es{" "}
-          <Highlight>convertir problemas de datos en software claro y confiable.</Highlight>
+          Soy desarrollador fullstack en formación: construyo aplicaciones completas, del backend y la base de datos
+          hasta la interfaz web y móvil. Me interesa la arquitectura de software y llevar la inteligencia artificial a
+          productos reales. Mi meta es <Highlight>crear software sólido, escalable y con IA que resuelva problemas reales.</Highlight>
         </p>
       </Reveal>
 

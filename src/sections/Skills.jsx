@@ -20,7 +20,7 @@ const certifications = [
 
 export const Skills = () => {
   return (
-    <Entry id="skills" number="03" label="Stack" title="Instrumental del laboratorio" note="ordenado por capa, de la interfaz a los datos">
+    <Entry id="skills" number="03" label="Stack" title="Stack" note="ordenado por capa, de la interfaz a los datos">
       <div className="grid gap-12 xl:grid-cols-[1.4fr_0.6fr] xl:gap-14">
         <dl className="border-t border-border">
           {stack.map(({ layer, items }) => (

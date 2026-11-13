@@ -42,7 +42,7 @@ export const Experience = () => {
   if (!SHOW_EXPERIENCE || experienceItems.length === 0) return null;
 
   return (
-    <Entry id="experience" number="04" label="Trayectoria" title="Registro de campo" note="lo más reciente arriba">
+    <Entry id="experience" number="04" label="Trayectoria" title="Trayectoria" note="lo más reciente arriba">
       <ol className="relative border-l border-border pl-6 sm:pl-10">
         {experienceItems.map(({ date, role, org, points, result, tech }) => (
           <Reveal as="li" key={`${date}-${org}`} className="relative pb-14 last:pb-0">

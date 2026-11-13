@@ -54,8 +54,7 @@ export const Projects = () => {
       id="projects"
       number="02"
       label="Proyectos"
-      title="Experimentos"
-      note={`${projectsData.length} registrados · más en camino`}
+      title="Proyectos"
     >
       <ul className="grid gap-x-8 gap-y-12 md:grid-cols-2">
         {projectsData.map((project, index) => (
