@@ -20,6 +20,7 @@ import {
   SiTailwindcss,
   SiTrello,
   SiTypescript,
+  SiDotnet,
 } from "react-icons/si";
 import { Entry } from "@/components/Entry";
 import { Reveal } from "@/components/Reveal";
@@ -37,6 +38,7 @@ const stack = [
       { name: "JavaScript", icon: SiJavascript },
       { name: "TypeScript", icon: SiTypescript },
       { name: "PHP", icon: SiPhp },
+      { name: ".NET", icon: SiDotnet },
     ],
   },
   {
