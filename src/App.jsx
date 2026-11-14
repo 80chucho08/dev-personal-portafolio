@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Navbar } from "@/layout/Navbar";
 import { Hero } from "@/sections/Hero";
 import { About } from "@/sections/About";
+import { InkInterlude } from "@/sections/InkInterlude";
 import { Projects } from "@/sections/Projects";
 import { Experience } from "@/sections/Experience";
 import { Skills } from "@/sections/Skills";
@@ -31,11 +32,12 @@ function App() {
   };
 
   return (
-    <div className="paper relative min-h-screen overflow-x-hidden text-foreground transition-colors duration-300">
+    <div className="paper relative min-h-screen overflow-x-clip text-foreground transition-colors duration-300">
       <Navbar theme={theme} toggleTheme={toggleTheme} />
       <main className="relative z-10">
         <Hero />
         <About />
+        <InkInterlude />
         <Projects />
         <Skills />
         <Experience />

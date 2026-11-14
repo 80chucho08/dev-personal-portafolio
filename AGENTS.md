@@ -33,7 +33,7 @@ src/
 public/                         Recursos servidos desde la raíz (foto, CV, capturas)
 ```
 
-La página se compone en `src/App.jsx` en este orden: `Navbar`, `Hero`, `About`, `Projects`, `Skills`, `Experience`, `Contact`. Las secciones se renderizan en una SPA sin router.
+La página se compone en `src/App.jsx` en este orden: `Navbar`, `Hero`, `About`, `InkInterlude`, `Projects`, `Skills`, `Experience`, `Contact`. Las secciones se renderizan en una SPA sin router.
 
 `components/Entry.jsx` es el layout de cada sección: columna de margen (número de entrada, etiqueta, nota manuscrita) + línea de margen + contenido. Úsalo para secciones nuevas.
 
@@ -52,6 +52,7 @@ La página se compone en `src/App.jsx` en este orden: `Navbar`, `Hero`, `About`,
 
 - El usuario decidió mostrar en el sitio solo correo y ciudad; el teléfono queda únicamente dentro del PDF del CV. No inventes datos personales.
 - `src/sections/Projects.jsx` muestra los proyectos como fichas "EXP-0n" del mismo tamaño. `featured: true` es una marca de prueba: el usuario decidirá después qué proyectos son destacados. Un proyecto sin demo usa `liveHref: null` (nunca `#`). La cuadrícula es de 3 columnas en pantallas grandes. Cada proyecto lleva `images: [{ src, caption }]` (capturas en `public/project_images/<proyecto>/`, rutas desde la raíz); con varias imágenes `ProjectGallery` muestra miniaturas y un visor ampliado (`<dialog>`). Los proyectos con la misma clave `group` se encierran en un marco "Relacionados" con ese nombre y se colocan en la posición del primero.
+- `src/sections/InkInterlude.jsx` es la "hoja de tinta" entre Perfil y Proyectos (sin Entry, id `interlude`): escena three.js en `src/components/ink/` (`InkScene.jsx` carga perezosa, shaders de la mancha en `shaders.js`, bocetos a pluma dibujados en canvas 2D en `sketches.js`, composición compartida en `layout.js`). La animación está dirigida por el scroll: la sección mide 300svh, la hoja se ancla (`sticky`) y el progreso 0..1 recorre `TIMELINE` (shaders.js) con suavizado; por eso el contenedor de `App.jsx` usa `overflow-x-clip` (con `overflow-x-hidden` se rompería el sticky). El ratón (ondas, salpicaduras, notas) sigue siendo independiente del scroll. Las tecnologías de los bocetos (`parts` en InkInterlude) salen del Stack real; Next.js no está en el CV. Con `prefers-reduced-motion` o sin WebGL no se ancla y se muestra el estado final estático y en pantallas <560 px muestra las notas como leyenda. En desarrollo, `window.__inkTime = n` fija el tiempo de la animación para depurarla.
 - `src/assets/` contiene recursos del starter de Vite/React además de `hero.png`; comprueba las referencias antes de eliminar recursos.
 - El README existente contiene documentación anterior. Si se modifica, verifica cada afirmación contra el código actual.
 
