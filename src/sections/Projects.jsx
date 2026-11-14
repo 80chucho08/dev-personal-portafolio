@@ -14,9 +14,9 @@ const projectsData = [
     repoHref: "https://github.com/80chucho08/vehiculo-iot-front",
     group: "Vehículo IoT",
     images: [
-      { src: "/project_images/control-iot-front/control-dashboard.png", caption: "Panel de control con joysticks virtuales, parada de emergencia y estado de los servicios." },
-      { src: "/project_images/control-iot-front/demo-ejecucion.png", caption: "Rutina demo en ejecución con temporizador y botón para cancelarla." },
-      { src: "/project_images/control-iot-front/monitoring-dashboard.png", caption: "Monitoreo: último movimiento y los últimos 10 comandos persistidos en la base de datos." },
+      { src: "/project_images/control-iot-front/control-dashboard.jpg", caption: "Panel de control con joysticks virtuales, parada de emergencia y estado de los servicios." },
+      { src: "/project_images/control-iot-front/demo-ejecucion.jpg", caption: "Rutina demo en ejecución con temporizador y botón para cancelarla." },
+      { src: "/project_images/control-iot-front/monitoring-dashboard.jpg", caption: "Monitoreo: último movimiento y los últimos 10 comandos persistidos en la base de datos." },
     ],
     featured: null,
   },
