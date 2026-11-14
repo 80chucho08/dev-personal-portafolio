@@ -37,18 +37,55 @@ const facts = [
 export const About = () => {
   return (
     <Entry id="about" number="01" label="Perfil" title="Perfil" note="lo que me mueve →">
-      <Reveal>
-        <p className="max-w-3xl text-xl leading-relaxed text-foreground sm:text-2xl">
-          Soy desarrollador fullstack en formación: construyo aplicaciones completas, del backend y la base de datos
-          hasta la interfaz web y móvil. Me interesa la arquitectura de software y llevar la inteligencia artificial a
-          productos reales. Mi meta es <Highlight>crear software sólido, escalable y con IA que resuelva problemas reales.</Highlight>
-        </p>
-      </Reveal>
-
-      <div className="mt-14 grid gap-12 xl:grid-cols-[1.4fr_0.6fr] xl:gap-14">
-        <div>
+      <div className="grid gap-12 lg:grid-cols-[15rem_1fr] lg:gap-14">
+        {/* Ficha lateral: foto pequeña + datos rápidos */}
+        <div className="order-2 space-y-8 lg:order-1">
           <Reveal>
-            <h3 className="mb-2 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">Líneas de trabajo</h3>
+            <figure className="relative mx-auto w-40 -rotate-2 border border-border bg-card p-2 shadow-sm sm:w-44 lg:mx-0 lg:w-full">
+              <span className="tape -top-3 left-6 -rotate-6" aria-hidden="true" />
+              <img
+                src="/perfil2.jpg"
+                alt="Retrato de Jesús Alfonso Navarro Carbajal"
+                width="736"
+                height="736"
+                loading="lazy"
+                className="aspect-square w-full object-cover"
+              />
+            </figure>
+          </Reveal>
+
+          <Reveal>
+            <aside className="border border-border bg-card p-6">
+              <h3 className="font-hand text-2xl text-primary">datos rápidos</h3>
+              <dl className="mt-4 divide-y divide-border">
+                {facts.map(([label, value]) => (
+                  <div key={label} className="py-3">
+                    <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">{label}</dt>
+                    <dd className="mt-1 text-base text-foreground">{value}</dd>
+                  </div>
+                ))}
+              </dl>
+              <a href="#contact" className="ink-link mt-5 inline-block text-base">
+                Escríbeme →
+              </a>
+            </aside>
+          </Reveal>
+        </div>
+
+        <div className="order-1 lg:order-2">
+          <Reveal>
+            <p className="max-w-3xl text-xl leading-relaxed text-foreground sm:text-2xl">
+              Soy desarrollador fullstack en formación: construyo aplicaciones completas, del backend y la base de datos
+              hasta la interfaz web y móvil. Me interesa la arquitectura de software y llevar la inteligencia artificial a
+              productos reales. Mi meta es{" "}
+              <Highlight>crear software sólido, escalable y con IA que resuelva problemas reales.</Highlight>
+            </p>
+          </Reveal>
+
+          <Reveal>
+            <h3 className="mb-2 mt-14 font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">
+              Líneas de trabajo
+            </h3>
           </Reveal>
           <ol className="border-t border-border">
             {focusLines.map(({ code, title, body, open }) => (
@@ -69,23 +106,6 @@ export const About = () => {
             ))}
           </ol>
         </div>
-
-        <Reveal>
-          <aside className="border border-border bg-card p-6">
-            <h3 className="font-hand text-2xl text-primary">datos rápidos</h3>
-            <dl className="mt-4 divide-y divide-border">
-              {facts.map(([label, value]) => (
-                <div key={label} className="py-3">
-                  <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">{label}</dt>
-                  <dd className="mt-1 text-base text-foreground">{value}</dd>
-                </div>
-              ))}
-            </dl>
-            <a href="#contact" className="ink-link mt-5 inline-block text-base">
-              Escríbeme →
-            </a>
-          </aside>
-        </Reveal>
       </div>
     </Entry>
   );
