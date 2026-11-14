@@ -51,7 +51,7 @@ La página se compone en `src/App.jsx` en este orden: `Navbar`, `Hero`, `About`,
 ## Estado observado y puntos a tener presentes
 
 - El usuario decidió mostrar en el sitio solo correo y ciudad; el teléfono queda únicamente dentro del PDF del CV. No inventes datos personales.
-- `src/sections/Projects.jsx` muestra los proyectos como fichas "EXP-0n" del mismo tamaño. `featured: true` (UniTrack, SchTrack) es una marca de prueba: el usuario decidirá después qué proyectos son destacados. Un proyecto sin demo usa `liveHref: null` (nunca `#`).
+- `src/sections/Projects.jsx` muestra los proyectos como fichas "EXP-0n" del mismo tamaño. `featured: true` es una marca de prueba: el usuario decidirá después qué proyectos son destacados. Un proyecto sin demo usa `liveHref: null` (nunca `#`). La cuadrícula es de 3 columnas en pantallas grandes. Cada proyecto lleva `images: [{ src, caption }]` (capturas en `public/project_images/<proyecto>/`, rutas desde la raíz); con varias imágenes `ProjectGallery` muestra miniaturas y un visor ampliado (`<dialog>`). Los proyectos con la misma clave `group` se encierran en un marco "Relacionados" con ese nombre y se colocan en la posición del primero.
 - `src/assets/` contiene recursos del starter de Vite/React además de `hero.png`; comprueba las referencias antes de eliminar recursos.
 - El README existente contiene documentación anterior. Si se modifica, verifica cada afirmación contra el código actual.
 

@@ -1,10 +1,11 @@
 import { FiArrowUpRight, FiGithub } from "react-icons/fi";
+import { ProjectGallery } from "@/components/ProjectGallery";
 
 const linkClass =
   "inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.12em] text-primary transition-colors duration-200 hover:text-foreground";
 
-/* Ficha de experimento: recorte con la captura, descripción y montaje (stack). */
-export const CardProjects = ({ code, name, kind, description, tags = [], imageSrc, liveHref, repoHref, featured }) => (
+/* Ficha de experimento: recorte(s) con las capturas, descripción y montaje (stack). */
+export const CardProjects = ({ code, name, kind, description, tags = [], images = [], liveHref, repoHref, featured }) => (
   <article className="group relative flex h-full flex-col border border-border bg-card p-4 sm:p-5">
     {featured && (
       <span className="absolute -right-2 -top-4 z-10 rotate-6 bg-highlight px-2 font-hand text-xl text-foreground shadow-sm">
@@ -12,21 +13,11 @@ export const CardProjects = ({ code, name, kind, description, tags = [], imageSr
       </span>
     )}
 
-    <div className="relative border border-border bg-background p-2">
-      <span className="tape -top-3 left-6 -rotate-6" aria-hidden="true" />
-      <div className="overflow-hidden">
-        <img
-          src={imageSrc}
-          alt={`Captura de ${name}`}
-          loading="lazy"
-          className="aspect-[16/10] w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
-        />
-      </div>
-    </div>
+    {images.length > 0 && <ProjectGallery name={name} images={images} />}
 
     <div className="flex flex-1 flex-col px-1 pt-6">
       <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{code}</p>
-      <h3 className="mt-2 font-display text-3xl font-medium leading-tight text-foreground">{name}</h3>
+      <h3 className="mt-2 font-display text-2xl font-medium leading-tight text-foreground sm:text-3xl">{name}</h3>
       <p className="text-lg italic text-muted-foreground">{kind}</p>
       <p className="mt-4 text-base leading-relaxed text-foreground">{description}</p>
 
