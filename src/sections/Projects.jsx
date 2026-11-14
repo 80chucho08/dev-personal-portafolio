@@ -5,6 +5,28 @@ import { Reveal } from "@/components/Reveal";
 // `featured` es una marca de prueba; la selección definitiva de destacados está pendiente.
 const projectsData = [
   {
+    name: "Carrito IoT Control System",
+    kind: "IoT Dashboard",
+    description:
+      "Panel web interactivo para el control y monitoreo remoto de un vehículo robótico IoT. Integra joysticks virtuales, ejecución de rutinas automatizadas, parada de emergencia y telemetría en tiempo real mediante una API REST y WebSockets.",
+    tags: ["JavaScript", "HTML5", "CSS3", "ES Modules", "REST API", "WebSocket", "GitHub Pages"],
+    liveHref: "https://80chucho08.github.io/vehiculo-iot-front/",
+    repoHref: "https://github.com/80chucho08/vehiculo-iot-front",
+    imageSrc: "project_images/control-iot-front/control-dashboard.png",
+    featured: null,
+  },
+  {
+    name: "IoT Vehicle Management API",
+    kind: "Backend API",
+    description:
+      "API backend desarrollada con FastAPI para la gestión y control de vehículos IoT. Integra servicios REST, comunicación WebSocket en tiempo real y persistencia con MySQL. Desplegada en una instancia AWS EC2 con acceso mediante dominio dinámico DuckDNS.",
+    tags: ["Python", "AWS EC2 (Windows Server)", "MySQL", "DuckDNS", "REST API y WebSockets", "Stored Procedures", "FastAPI + Uvicorn"],
+    liveHref: "https://vehiculo-iot-itp.duckdns.org/docs",
+    repoHref: "https://github.com/80chucho08/vehiculo-iot-api.git",
+    imageSrc: "project_images/control-iot-api/swagger-image-1.png",
+    featured: true,
+  },
+  {
     name: "UniTrack",
     kind: "Gestor académico",
     description:
@@ -12,7 +34,7 @@ const projectsData = [
     tags: ["React", "TypeScript", "Node.js", "Express", "MySQL", "JWT", "Tailwind"],
     liveHref: null,
     repoHref: "https://github.com/80chucho08/UniTrack",
-    imageSrc: "/unitrack.jpg",
+    imageSrc: "project_images/unitrack/unitrack.jpg",
     featured: true,
   },
   {
@@ -23,7 +45,7 @@ const projectsData = [
     tags: ["React", "TypeScript", "Vite", "Drag & Drop", "LocalStorage"],
     liveHref: "https://80chucho08.github.io/SchTrack/",
     repoHref: "https://github.com/80chucho08/SchTrack",
-    imageSrc: "/schtrack.jpg",
+    imageSrc: "project_images/schtrack/schtrack.jpg",
     featured: true,
   },
   {
@@ -34,7 +56,7 @@ const projectsData = [
     tags: ["PHP", "MySQL", "Bootstrap", "CRUD", "Autenticación"],
     liveHref: null,
     repoHref: "https://github.com/80chucho08/RappiPachuca",
-    imageSrc: "/rappipachuca.jpg",
+    imageSrc: "project_images/rappipachuca/rappipachuca.jpg",
   },
   {
     name: "Life Counter",
@@ -44,7 +66,7 @@ const projectsData = [
     tags: ["React", "JavaScript", "LocalStorage"],
     liveHref: "https://80chucho08.github.io/Life-Counter",
     repoHref: "https://github.com/80chucho08/Life-Counter",
-    imageSrc: "/lifecounter.png",
+    imageSrc: "project_images/life-counter/lifecounter.png",
   },
 ];
 
