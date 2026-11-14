@@ -1,6 +1,8 @@
 import { Entry } from "@/components/Entry";
 import { Reveal } from "@/components/Reveal";
 import { Highlight } from "@/components/Highlight";
+import { PhotoStack } from "@/components/PhotoStack";
+import { careerImages } from "@/data/careerImages";
 
 export const SHOW_EXPERIENCE = true;
 
@@ -16,6 +18,8 @@ const experienceItems = [
     ],
     result: "App de registro vehicular para varias sucursales",
     tech: ["JavaScript", "React Native", "Android Studio", "Expo Go"],
+    gallery: "VeranoRica",
+    galleryName: "Rica Coca-Cola",
   },
   {
     date: "Dic 2024 — Dic 2025",
@@ -28,6 +32,8 @@ const experienceItems = [
     ],
     result: "Menor tiempo de procesamiento con grandes volúmenes de registros",
     tech: ["PHP", "SQL Server", "TypeScript", "React", "HTML/CSS"],
+    gallery: "PasanteCentroComputoITP",
+    galleryName: "Centro de Cómputo ITP",
   },
   {
     date: "2022 — Dic 2026",
@@ -35,8 +41,11 @@ const experienceItems = [
     org: "Instituto Tecnológico de Pachuca",
     points: ["Cursando 9.º semestre; próximo a realizar prácticas profesionales."],
     tech: [],
+    gallery: "IngSistemasComputacionales",
+    galleryName: "Vida universitaria",
   },
 ];
+
 
 export const Experience = () => {
   if (!SHOW_EXPERIENCE || experienceItems.length === 0) return null;
@@ -44,39 +53,52 @@ export const Experience = () => {
   return (
     <Entry id="experience" number="04" label="Trayectoria" title="Trayectoria" note="lo más reciente arriba">
       <ol className="relative border-l border-border pl-6 sm:pl-10">
-        {experienceItems.map(({ date, role, org, points, result, tech }) => (
-          <Reveal as="li" key={`${date}-${org}`} className="relative pb-14 last:pb-0">
-            <span
-              aria-hidden="true"
-              className="absolute -left-[calc(1.5rem+5px)] top-2 size-2.5 rounded-full border-2 border-primary bg-background sm:-left-[calc(2.5rem+5px)]"
-            />
-            <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{date}</p>
-            <h3 className="mt-2 font-display text-3xl font-medium leading-tight text-foreground">{role}</h3>
-            <p className="mt-1 text-lg italic text-muted-foreground">{org}</p>
+        {experienceItems.map(({ date, role, org, points, result, tech, gallery, galleryName }) => {
+          const photos = careerImages[gallery] ?? [];
+          return (
+            <Reveal as="li" key={`${date}-${org}`} className="relative pb-14 last:pb-0">
+              <span
+                aria-hidden="true"
+                className="absolute -left-[calc(1.5rem+5px)] top-2 size-2.5 rounded-full border-2 border-primary bg-background sm:-left-[calc(2.5rem+5px)]"
+              />
+              <div className="gap-10 lg:grid lg:grid-cols-[minmax(0,1fr)_17rem]">
+                <div>
+                  <p className="font-mono text-xs uppercase tracking-[0.14em] text-muted-foreground">{date}</p>
+                  <h3 className="mt-2 font-display text-3xl font-medium leading-tight text-foreground">{role}</h3>
+                  <p className="mt-1 text-lg italic text-muted-foreground">{org}</p>
 
-            <ul className="mt-5 max-w-3xl space-y-2">
-              {points.map((point) => (
-                <li key={point} className="flex gap-3 text-base leading-relaxed text-foreground sm:text-lg">
-                  <span aria-hidden="true" className="text-muted-foreground">—</span>
-                  <span>{point}</span>
-                </li>
-              ))}
-            </ul>
+                  <ul className="mt-5 max-w-3xl space-y-2">
+                    {points.map((point) => (
+                      <li key={point} className="flex gap-3 text-base leading-relaxed text-foreground sm:text-lg">
+                        <span aria-hidden="true" className="text-muted-foreground">—</span>
+                        <span>{point}</span>
+                      </li>
+                    ))}
+                  </ul>
 
-            {result && (
-              <p className="mt-5 text-base sm:text-lg">
-                <span className="mr-2 font-hand text-2xl text-primary">resultado:</span>
-                <Highlight>{result}</Highlight>
-              </p>
-            )}
+                  {result && (
+                    <p className="mt-5 text-base sm:text-lg">
+                      <span className="mr-2 font-hand text-2xl text-primary">resultado:</span>
+                      <Highlight>{result}</Highlight>
+                    </p>
+                  )}
 
-            {tech.length > 0 && (
-              <p className="mt-4 font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground">
-                {tech.join(" · ")}
-              </p>
-            )}
-          </Reveal>
-        ))}
+                  {tech.length > 0 && (
+                    <p className="mt-4 font-mono text-xs uppercase tracking-[0.12em] text-muted-foreground">
+                      {tech.join(" · ")}
+                    </p>
+                  )}
+                </div>
+
+                {photos.length > 0 && (
+                  <div className="mt-8 lg:mt-1 lg:justify-self-end">
+                    <PhotoStack name={galleryName} images={photos} />
+                  </div>
+                )}
+              </div>
+            </Reveal>
+          );
+        })}
       </ol>
     </Entry>
   );
