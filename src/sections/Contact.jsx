@@ -46,7 +46,7 @@ export const Contact = () => {
       id="contact"
       number={SHOW_EXPERIENCE ? "05" : "04"}
       label="Contacto"
-      title="Dejemos una nota"
+      title="Contacto"
       note={`en Pachuca son las ${localTime}`}
     >
       <div className="grid items-start gap-12 xl:grid-cols-[1.2fr_0.8fr] xl:gap-14">
