@@ -55,10 +55,10 @@ const projectsData = [
     liveHref: "https://80chucho08.github.io/SchTrack/",
     repoHref: "https://github.com/80chucho08/SchTrack",
     images: [
-      { src: "/project_images/schtrack/Example-export-schedule.png", caption: "Ejemplo del horario exportado como imagen PNG." },
       { src: "/project_images/schtrack/Modal-information.png", caption: "Modal de bienvenida con los pasos: crear, arrastrar, ajustar, eliminar y exportar." },
       { src: "/project_images/schtrack/Add-subject-panel.png", caption: "Agregar materia: nombre y color; el panel guarda las materias listas para arrastrar." },
       { src: "/project_images/schtrack/Schedule-image.png", caption: "Horario semanal armado con materias de colores arrastradas a cada hora." },
+      { src: "/project_images/schtrack/Example-export-schedule.png", caption: "Ejemplo del horario exportado como imagen PNG." },
     ],
     featured: true,
   },
